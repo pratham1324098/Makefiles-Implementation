@@ -1,0 +1,127 @@
+prathamkumar@DESKTOP:~/newFolder$ cat functions.h
+
+const char* get_message(){
+        return "Hello World\n";
+}
+
+prathamkumar@DESKTOP:~/newFolder$ cat hello.c
+
+#include<stdio.h>
+#include "functions.h"
+void hello(){
+        printf("%s\n",get_message());
+}
+
+prathamkumar@DESKTOP:~/newFolder$ cat hello.c
+
+#include<stdio.h>
+#include "functions.h"
+void hello(){
+        printf("%s\n",get_message());
+}
+
+prathamkumar@DESKTOP:~/newFolder$ cat main.c
+
+int main(){
+        hello();
+        return 0;
+}
+
+prathamkumar@DESKTOP:~/newFolder$ gcc -Wno-implicit-function-declaration -c main.c
+prathamkumar@DESKTOP:~/newFolder$ gcc -Wno-implicit-function-declaration -c hello.c
+prathamkumar@DESKTOP:~/newFolder$ ls
+functions.h  hello.c  hello.o  main.c  main.o  y
+prathamkumar@DESKTOP:~/newFolder$ rm y
+prathamkumar@DESKTOP:~/newFolder$ ls
+functions.h  hello.c  hello.o  main.c  main.o
+prathamkumar@DESKTOP:~/newFolder$ gcc -Wno-implicit-function-declaration main.o hello.o -o final
+prathamkumar@DESKTOP:~/newFolder$ ls
+final  functions.h  hello.c  hello.o  main.c  main.o
+prathamkumar@DESKTOP:~/newFolder$ chmod +x final
+prathamkumar@DESKTOP:~/newFolder$ ls
+final  functions.h  hello.c  hello.o  main.c  main.o
+prathamkumar@DESKTOP:~/newFolder$ ./final
+Hello World
+
+
+//********************************************Makefiles*********************************
+prathamkumar@DESKTOP:~/Makefiles$ cat Makefiles
+CFLAGS = -Wno-implicit-function-declaration
+all: final
+final: main.o hello.o
+        echo "Linking and producing the final application"
+        gcc $(CFLAGS) main.o hello.o -o final
+        chmod +x final
+main.o: main.c
+        echo "Compiling the main file"
+        gcc $(CFLAGS) -c main.c
+hello.o: hello.c
+        echo "Compiling the hello file"
+        gcc $(CFLAGS) -c hello.c
+clean:
+        echo "Removing everything but the source files"
+        rm main.o hello.o final
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
